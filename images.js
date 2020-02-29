@@ -82,7 +82,9 @@ async function loadNextPage() {
     page++;
 }
 
+// Infinite scroll effect.
 window.addEventListener("scroll", function() {
+    // Checks if button for reloading content is visible in viewport, if so load more images.
     if(reloadButton.getBoundingClientRect().top < window.innerHeight) {
         loadNextPage();
     }
