@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width"/>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="images.js" type="module"></script>
 
     <title>Martin's Image Gallery</title>
@@ -10,14 +12,11 @@
 <body>
     <nav>
         <h1>Photo Gallery</h1>
-        <div class="search-container">
-            <form>
-                <input type="text" placeholder="Search using tags separated by ',''" name="search"/>
-                <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
     </nav>
-    <main id="gallery"></main> <!-- Will hold all gallery iamges which are added by images.js. -->
-    <footer><p>Images are collected from Flickr</p></footer>
+    <main>
+        <div id="gallery"></div> <!-- Will hold all gallery iamges which are added by images.js. -->
+    </main>
+
+    <footer><button id="reload-button">Load more images!</button></footer>
 </body>
 </html>

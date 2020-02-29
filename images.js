@@ -1,25 +1,22 @@
-// Import fetched data
+// Import fetched data and search function
 import {getData} from './data.js';
 
 // Arrays with all images and alternative texts
 const IMAGES = [];
 const ALTS = [];
-const GALLERY_SIZE = 240;
+
+const GALLERY_SIZE = 60;
+var page = 1;
 
 // Wait for 'window' to load before running the rest of the script
 addEventListener('load', main);
 
-async function main() {
+var reloadButton = document.getElementById("reload-button");
+reloadButton.addEventListener("click", loadNextPage);
+
+function main() {
     removeEventListener('load', main);  // 'window' loaded, no need to listen for it.
-
-    createGallery(GALLERY_SIZE);
-
-    await getData().then((data) => {
-        createImageFromUrl(data);
-    });
-
-
-    fillGallery();
+    loadNextPage();
 }
 
 // Push image URL:s to IMAGES according to Flickr's Photo Source URLS.
@@ -50,7 +47,8 @@ function createGallery(numberOfImages) {
 function fillGallery() {
 
     var galleryImgs = document.images;  // Get all <img>-tags on page.
-    for(let i = 0; i < GALLERY_SIZE; i++)
+    let start_pos = GALLERY_SIZE * (page-1);    // Indexing variable used to make sure we collect images from the right position of IMAGES.
+    for(let i = start_pos; i < start_pos + GALLERY_SIZE; i++)
     {
         // Create a new image that will be used to load the correct src.
         var loadingImage = new Image();
@@ -59,10 +57,7 @@ function fillGallery() {
             galleryImgs[i].src = this.src;        
             galleryImgs[i].alt = ALTS[i];
         };
-        if(i == 2)
-            loadingImage.src ="afosihasof";
-        else
-            loadingImage.src = IMAGES[i];
+        loadingImage.src = IMAGES[i];
         
         loadingImage.onerror = function() { // If the image could not be found (broken link etc.) use local error image.
             
@@ -71,3 +66,24 @@ function fillGallery() {
         };
     }
 }
+
+// Loads next page by calling getData with new page number and gallery size.
+async function loadNextPage() {
+    // Set-up gallery before loading data.
+    createGallery(GALLERY_SIZE);
+
+    await getData(page, GALLERY_SIZE).then((data) => {
+        createImageFromUrl(data);
+    });
+
+    // Now fill gallery with loaded data.
+    fillGallery();
+
+    page++;
+}
+
+window.addEventListener("scroll", function() {
+    if(reloadButton.getBoundingClientRect().top < window.innerHeight) {
+        loadNextPage();
+    }
+});
