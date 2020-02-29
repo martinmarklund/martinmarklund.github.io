@@ -3,13 +3,21 @@
 <head>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="style.css" />
-    <script src="images.js" type="module"></script>
+    <script defer src="images.js" type="module"></script>
 
     <title>Martin's Image Gallery</title>
 </head>
 <body>
-    <div id="gallery">
-
-    </div>
+    <nav>
+        <h1>Photo Gallery</h1>
+        <div class="search-container">
+            <form>
+                <input type="text" placeholder="Search using tags separated by ',''" name="search"/>
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </nav>
+    <main id="gallery"></main> <!-- Will hold all gallery iamges which are added by images.js. -->
+    <footer><p>Images are collected from Flickr</p></footer>
 </body>
 </html>
