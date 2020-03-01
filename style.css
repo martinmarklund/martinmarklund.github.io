@@ -1,16 +1,16 @@
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-
+    
     background-color: #edede8;
 
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 main {
     padding: 1rem;
 }
 h1 {
-    margin: 2rem 1rem;
+    margin: 2rem;
 }
 
 nav, footer {
@@ -21,27 +21,37 @@ nav, footer {
     align-items: center;
 
     overflow: hidden;
+
     background-color: #2e2e2e;
     color: #edede8;
 }
+#reload-button {
+    margin: 1rem;
+    width: 100%;
 
-/* Mobile menu styling */
-@media screen and (max-width: 600px) {
+    /* Override the default button styling. */
+    overflow: hidden;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+
+    color: #edede8;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+/* Tablet and mobile and menu styling */
+@media screen and (max-width: 770px) {
     nav {
         padding: 1rem;
 
         flex-direction: column;
         align-content: center;
     }
-    nav h1, nav .search-container {
-        display: block;
-        text-align: left;
-        margin: 0;
-        padding: 14px;
-    }
-
-    nav input[type=text] {
-        border: 1px solid #edede8;
+    nav h1 {
+        margin: 1rem;
     }
 }
 
@@ -57,48 +67,37 @@ nav, footer {
 }
 
 .gallery-img {
-    object-fit: cover;
+    /* Crop images to 500x500 so all images look good next to eachother. */
     width: 500px;
     height: 500px;
+    object-fit: cover;  
 }
 
 .loading-img {
     /* Width and heigh set to match gallery dimensions. */
     width: 500px;
     height: 500px;
-    object-fit: scale-down; /* Use scale-down to use original size (50x50). */
+    object-fit: scale-down; /* Use scale-down to use original size on source image. */
 }
 
-/* Mobile gallery styling */
-@media screen and (max-width: 600px) {
+/* Large tablet gallery styling */
+@media screen and (max-width: 1024px) {
     #gallery {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        
     }
-
     .gallery-img, .loading-img {
         width: 200px;
         height: 200px;
     }
 }
 
-/* Bottom of the page styling */
-#reload-button {
-    margin: 1rem;
-    width: 100%;
-
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: none;
-    cursor: pointer;
-    overflow: hidden;
-
-    color: #edede8;
-
-    font-size: 16px;
-    font-weight: bold;
-}
-
-footer {
-    justify-content: center;
+/* Small tablet and mobile gallery styling */
+@media screen and (max-width: 600px) {
+    #gallery {
+        grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    }
+    .gallery-img, .loading-img {
+        width: 150px;
+        height: 150px;
+    }
 }
