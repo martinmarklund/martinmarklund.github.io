@@ -21,7 +21,6 @@ function main() {
 
 // Push image URL:s to IMAGES according to Flickr's Photo Source URLS.
 function createImageFromUrl(data) {
-    //console.log(data)
     let photos = data.photos.photo;
     for (let i = 0; i < photos.length; ++i) {
         IMAGES.push(`https://farm${photos[i].farm}.staticflickr.com/${photos[i].server}/${photos[i].id}_${photos[i].secret}.jpg`);
