@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width"/>
+
+        <script src="question_box.js"></script>
+        <title>Question Box</title>
+    </head>
+    <body>
+        <h1>Welcome to Malhaha's question box</h1>
+        <p>
+            Here you can submit qvuestions to Malhaha's Friday Fun question box.<br/>
+            You can also draw a randomly generated question from the box.
+        </p>
+        <section>
+            <h2>Submit a question to the box!</h2>
+            <form>
+                <label for="question">What's your question?</label><br/>
+                <input type="text" name="question" />
+                <input type="submit"/>
+            </form>
+        </section>
+        <section>
+            <h2>...or draw a question from the box!</h2>
+            <button type="button">Draw question!</button><br/>
+            <label>Your question is:</label>
+            <p><i id="question">There is no question yet. Akward...</i></p>
+            <button type="button" onclick="copyToClipboard">Copy to clipbord</button>
+        </section>
+        <section>
+            <h2>FAQ</h2>
+            <h3>What?</h3>
+            <p>A digital representation of a box full of handwritten questions.</p>
+            <h3>Why?</h3>
+            <p>Because managing a physical question box is quite cumbersome.</p>
+            <h3>No really, why?</h3>
+            <p>Because we like to spice up the Friday stand-up meetings with a fun question answer.</p>
+        </section>
+    </body>
+    <footer><hr/>Created by Martin Marklund</footer>
+</html>
